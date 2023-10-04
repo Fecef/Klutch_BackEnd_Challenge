@@ -47,11 +47,16 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
-    "django_filters",
     "drf_spectacular",
 ]
 
-MY_APPS = []
+MY_APPS = [
+    "bank",
+    "client",
+    "installment",
+    "rate_table",
+    "solicitation",
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
