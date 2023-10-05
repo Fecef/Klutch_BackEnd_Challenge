@@ -33,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -56,6 +57,7 @@ MY_APPS = [
     "installment",
     "rate_table",
     "solicitation",
+    "corsheaders",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -68,6 +70,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "_core.urls"
