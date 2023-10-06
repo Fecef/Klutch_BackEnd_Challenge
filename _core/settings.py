@@ -33,6 +33,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+
 
 # Application definition
 
@@ -53,14 +56,15 @@ THIRD_PARTY_APPS = [
 MY_APPS = [
     "bank",
     "client",
-    "installment",
     "rate_table",
     "solicitation",
+    "corsheaders",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -124,6 +128,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "COERCE_DECIMAL_TO_STRING": False,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_PERMISSION_CLASSES": [],
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

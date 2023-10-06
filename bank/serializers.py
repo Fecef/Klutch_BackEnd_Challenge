@@ -8,7 +8,8 @@ class BankSerializer(serializers.ModelSerializer):
         model = Bank
         fields = [
             "id",
-            "label",
-            "account_type_label",
-            "account_number",
+            "name",
+            "type",
+            "agency",
+            "number",
         ]

@@ -8,14 +8,10 @@ class SolicitationSerializer(serializers.ModelSerializer):
         model = Solicitation
         fields = [
             "id",
-            "client",
-            "installment_interest",
-            "installment_interest_value",
-            "comission",
-            "comission_value",
+            "installments",
             "installment_value",
-            "card_number",
-            "desired_value",
-            "total_loan",
+            "loan_to_get",
+            "loan_to_pay",
+            "client",
             "rate_table",
         ]
