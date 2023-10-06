@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", default="False").lower() == "True"
+DEBUG = os.getenv("DEBUG", False).lower() == True
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
@@ -110,9 +110,9 @@ DATABASES = {
     }
 }
 
-database_url = os.getenv("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(database_url)
 
+DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(DATABASE_URL)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
