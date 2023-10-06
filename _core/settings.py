@@ -30,9 +30,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", False).lower() == True
+DEBUG = os.getenv("DEBUG", False)
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+
+RENDER_URL = os.getenv("RENDER_URL")
+
+if RENDER_URL:
+    ALLOWED_HOSTS += [RENDER_URL]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
@@ -112,7 +117,12 @@ DATABASES = {
 
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASES["default"] = dj_database_url.parse(DATABASE_URL)
+# DATABASES["default"] = dj_database_url.parse(DATABASE_URL)
+
+if DATABASE_URL:
+    production_db = dj_database_url.config(default=DATABASE_URL)
+    DATABASES["default"].update(production_db)
+    DEBUG = False
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
