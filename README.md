@@ -32,12 +32,14 @@ pip install -r requirements.txt
 
 ```bash
 # .env.example
+# Conexão com Banco de Dados
 SECRET_KEY=secretkey
 POSTGRES_USERNAME=postgres_admin_user
 POSTGRES_PASSWORD=postgres_admin_password
 POSTGRES_DB_NAME=database_name
 POSTGRES_DB_HOST=localhost
 POSTGRES_PORT=dabase_port
+DEBUG=True
 ```
 
 # Atenção!
