@@ -1,10 +1,12 @@
+from datetime import datetime
 from rest_framework import serializers
-
 from bank.serializers import BankSerializer
 from .models import Client
 
 
 class ClientSerializer(serializers.ModelSerializer):
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
     bank = BankSerializer()
 
     class Meta:
@@ -15,6 +17,8 @@ class ClientSerializer(serializers.ModelSerializer):
             "phone",
             "cpf",
             "bank",
+            "created_at",
+            "updated_at",
         ]
         depth = 1
 
@@ -26,3 +30,15 @@ class ClientSerializer(serializers.ModelSerializer):
 
         client = Client.objects.create(**validated_data, bank=bank)
         return client
+
+    def get_created_at(self, obj: Client):
+        now = datetime.now()
+        obj.created_at = now.strftime("%Y-%m-%d %H:%M:%S")
+
+        return obj.created_at
+
+    def get_updated_at(self, obj: Client):
+        now = datetime.now()
+        obj.updated_at = now.strftime("%Y-%m-%d %H:%M:%S")
+
+        return obj.updated_at
