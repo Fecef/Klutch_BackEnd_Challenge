@@ -25,7 +25,7 @@ class Solicitation(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     client = models.OneToOneField("client.Client", on_delete=models.CASCADE)
-    rate_table = models.OneToOneField("rate_table.RateTable", on_delete=models.CASCADE)
+    rate_table = models.ForeignKey("rate_table.RateTable", on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["loan_to_get"]
