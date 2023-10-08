@@ -1,6 +1,6 @@
 import django_filters
 
-from client.models import Client
+from .models import Client
 
 
 class ClientFilter(django_filters.FilterSet):
