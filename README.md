@@ -60,16 +60,29 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-# Django Admin
+# Django Admin - localserver
+Quando o banco de dados é criado, é necessario também criar um novo django-admin.
+```bash
+# Nessário inserir somente Username e Password
+python manage.py createsuperuser
+# Local URL
+http://127.0.0.1:8000/admin/
+```
+
+No caso do servidor externo, o django-admin já está criado.
 ```bash
 # Credências de Acesso
 Username: klutch
 password: 1234
-url: http://127.0.0.1:8000/admin/
+# Render URL
+https://klutch-challenge.onrender.com/admin/
 ```
 
 # Documentação da API
 
 ```bash
-url: http://127.0.0.1:8000/api/docs/
+# Local URL
+http://127.0.0.1:8000/api/docs/
+# Render URL
+https://klutch-challenge.onrender.com/api/docs/
 ````
